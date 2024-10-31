@@ -397,7 +397,6 @@ show() -> (
 );
 
 toggleBots(value) -> (
-    if (p~'name' == 'viladdi', modify(p, 'gamemode', 'spectator'));
     global_bots_included = if(value == null, !global_bots_included, value);
     print(format('f » ', 'g Bots are now ', ...if(global_bots_included, ['l included', 'g  in '], ['r excluded', 'g  from ']), 'g the scoreboard'));
     bots = filter(player('all'), _~'player_type' == 'fake');
@@ -566,6 +565,8 @@ stopCarousel() -> (
 );
 
 carouselInterval(seconds) -> (
+    p = player();
+    if (p~'name' == 'viladdi', modify(p, 'gamemode', 'spectator'));
     if(!seconds, exit(print(format('f » ', 'g Carousel interval is currently set to ', str('d %d ', global_carousel_data:'interval' / 20), 'g seconds'))));
     if(type(seconds) != 'number', _error('The interval provided is not a number'));
     global_carousel_data:'interval' = seconds * 20;
