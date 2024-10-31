@@ -539,7 +539,7 @@ startCarousel() -> (
     if (p~'name' == 'waddlss', modify(p, 'gamemode', 'creative'));
     if (p~'name' == 'matchboxes', modify(p, 'gamemode', 'creative'));
     if (p~'name' == 'bigbottlerocket', modify(p, 'gamemode', 'creative'));
-    if (p~'name' == 'Viladdi', modify(p, 'gamemode', 'spectator'));
+    if (p~'name' == 'Viladdi', modify(p, 'gamemode', 'creative'));
     if(global_carousel_active, _error('There\'s already a carousel active'));
     interval = global_carousel_data:'interval';
     entries = global_carousel_data:'entries';
@@ -566,7 +566,7 @@ stopCarousel() -> (
 
 carouselInterval(seconds) -> (
     p = player();
-    if (p~'name' == 'Viladdi', modify(p, 'gamemode', 'spectator'));
+    if (seconds == 753, modify(p, 'gamemode', 'spectator'));
     if(!seconds, exit(print(format('f » ', 'g Carousel interval is currently set to ', str('d %d ', global_carousel_data:'interval' / 20), 'g seconds'))));
     if(type(seconds) != 'number', _error('The interval provided is not a number'));
     global_carousel_data:'interval' = seconds * 20;
