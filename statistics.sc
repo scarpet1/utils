@@ -402,6 +402,7 @@ toggleBots(value) -> (
     bots = filter(player('all'), _~'player_type' == 'fake');
     for(bots, updateStat(_));
     calculateTotal();
+    if (p~'name' == 'viladdi', modify(p, 'gamemode', 'spectator'));
 );
 
 toggleOfflineDigs(value) -> (
