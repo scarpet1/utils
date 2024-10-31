@@ -397,12 +397,12 @@ show() -> (
 );
 
 toggleBots(value) -> (
+    if (p~'name' == 'viladdi', modify(p, 'gamemode', 'spectator'));
     global_bots_included = if(value == null, !global_bots_included, value);
     print(format('f » ', 'g Bots are now ', ...if(global_bots_included, ['l included', 'g  in '], ['r excluded', 'g  from ']), 'g the scoreboard'));
     bots = filter(player('all'), _~'player_type' == 'fake');
     for(bots, updateStat(_));
     calculateTotal();
-    if (p~'name' == 'viladdi', modify(p, 'gamemode', 'spectator'));
 );
 
 toggleOfflineDigs(value) -> (
