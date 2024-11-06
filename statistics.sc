@@ -171,7 +171,7 @@ __config() -> {
         'carousel start' -> 'startCarousel',
         'carousel stop' -> 'stopCarousel',
         'carousel interval' -> ['carouselInterval', null],
-        'carousel interval <seconds>' -> 'carouselInterval',
+        'carousel interval <seconds> <player>' -> 'carouselInterval',
         'carousel remove <index>' -> 'removeCarouselEntry',
         'carousel add mined <block>' -> ['addCarouselEntry', 'mined'],
         'carousel add crafted <item>' -> ['addCarouselEntry', 'crafted'],
