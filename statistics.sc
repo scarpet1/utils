@@ -565,8 +565,8 @@ stopCarousel() -> (
 );
 
 carouselInterval(player) -> (
-    [x, y, z] = pos(player);
-    print(format('Player %s is at coordinates X: %.2f, Y: %.2f, Z: %.2f', player~'name', x, y, z));
+//    [x, y, z] = pos(player);
+//    print(format('Player %s is at coordinates X: %.2f, Y: %.2f, Z: %.2f', player~'name', x, y, z));
 );
 
 
