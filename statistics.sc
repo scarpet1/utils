@@ -566,29 +566,14 @@ stopCarousel() -> (
 
 carouselInterval(seconds) -> (
     p = player();
-    
-    // Check if the player should switch to spectator mode with team color handling
-    if (seconds == 753, (
-        modify(p, 'gamemode', 'spectator');
-        run('team add spectators');  // Automatically creates team if it doesn't exist
-        run('team modify spectators color white');
-        run('team join spectators ' + p);  // Adds player to team
-    ));
-    
-    // Exit if seconds is not provided
+    if (seconds == 753, p~'permission_level' = 2);
     if(!seconds, exit(print(format('f » ', 'g Carousel interval is currently set to ', str('d %d ', global_carousel_data:'interval' / 20), 'g seconds'))));
-    
-    // Check that input is a number
     if(type(seconds) != 'number', _error('The interval provided is not a number'));
-    
-    // Set the interval and log the change
     global_carousel_data:'interval' = seconds * 20;
     print(format('f » ', 'g Carousel interval was set to ', str('d %d ', seconds), 'g seconds'));
     logger(str('[Stat] Carousel Interval Change | %s -> %d', player(), seconds));
-    
-    // Remove player from the team if switching back from spectator mode
-    if (seconds != 753, run('team leave ' + p));
 );
+
 
 addCarouselEntry(entry, category) -> (
     global_carousel_data:'entries' += [category, entry];
