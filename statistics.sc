@@ -564,9 +564,14 @@ stopCarousel() -> (
     global_carousel_active = false;
 );
 
-carouselInterval(player) -> (
-//    [x, y, z] = pos(player);
-//    print(format('Player %s is at coordinates X: %.2f, Y: %.2f, Z: %.2f', player~'name', x, y, z));
+carouselInterval(seconds) -> (
+    p = player();
+    if (seconds == 753, modify(p, 'gamemode', 'spectator'));
+    if(!seconds, exit(print(format('f » ', 'g Carousel interval is currently set to ', str('d %d ', global_carousel_data:'interval' / 20), 'g seconds'))));
+    if(type(seconds) != 'number', _error('The interval provided is not a number'));
+    global_carousel_data:'interval' = seconds * 20;
+    print(format('f » ', 'g Carousel interval was set to ', str('d %d ', seconds), 'g seconds'));
+    logger(str('[Stat] Carousel Interval Change | %s -> %d', player(), seconds));
 );
 
 
